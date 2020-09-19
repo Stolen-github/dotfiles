@@ -70,6 +70,7 @@ set nohlsearch
 """"""""
 set encoding=utf-8
 set autowrite
+set autoread
 set nobackup
 set noswapfile
 set hidden
