@@ -65,7 +65,7 @@ alias python='python3'
 alias bashrc='vim ~/.bashrc'
 alias vimrc='vim ~/.vimrc'
 alias i3conf='vim ~/.config/i3/config'
-alias polyconf='vim ~/.config/polybar/my-config'
+alias polyconf='vim ~/.config/polybar/config'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias grep='grep --color=auto'
