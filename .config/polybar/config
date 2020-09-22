@@ -14,7 +14,7 @@ compositing-underline = over
 compositing-border = over
 
 format-foreground = #ff0000
-format-background = #00FF00
+format-background = #00ff00
 
 [colors]
 background = #aa000000
