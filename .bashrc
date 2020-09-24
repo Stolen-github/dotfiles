@@ -60,7 +60,7 @@ alias lc="clear;ls"
 alias q='exit'
 alias c='clear'
 alias h='history'
-alias python='python3'
+#alias python='python3'
 
 alias bashrc='vim ~/.bashrc'
 alias vimrc='vim ~/.vimrc'
