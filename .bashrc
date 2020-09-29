@@ -60,7 +60,8 @@ alias lc="clear;ls"
 alias q='exit'
 alias c='clear'
 alias h='history'
-#alias python='python3'
+
+alias vim='nvim'
 
 alias bashrc='vim ~/.bashrc'
 alias vimrc='vim ~/.vimrc'
@@ -127,5 +128,5 @@ up () {
 ###########
 # Default #
 ###########
-export EDITOR=vim
+export EDITOR=nvim
 export LANG=en_US.utf8

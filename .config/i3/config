@@ -37,27 +37,21 @@ set $right l
 ##################
 # Screen Options #
 ##################
-#exec --no-startup-id xrandr --output HDMI-1-0 --above eDP1 --auto
+set $firstMonitor eDP-1
+set $secondMonitor HDMI-1-0
 
-#set $firstMonitor eDP1
-#set $secondMonitor HDMI-1-0
+exec --no-startup-id sh ~/.config/i3/scripts/screencheck.sh $firstMonitor $secondMonitor
 
-#workspace 1 output $firstMonitor
-#workspace 2 output $firstMonitor
-#workspace 3 output $firstMonitor
-#workspace 4 output $firstMonitor
-#workspace 5 output $firstMonitor
-#workspace 6 output $secondMonitor
-#workspace 7 output $secondMonitor
-#workspace 8 output $secondMonitor
-#workspace 9 output $secondMonitor
-#workspace 10 output $secondMonitor
+workspace 1 output $firstMonitor
+workspace 2 output $secondMonitor
+workspace 10 output $secondMonitor
+workspace 9 output $secondMonitor
 
 
 ##################################
 # Launcher Applications Shortcut #
 ##################################
-bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#101010' -fn 'Ubuntu Mono:bold:pixelsize=17' -h 30
+bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#101010' -sb '#6c244b' -fn 'Ubuntu Mono:bold:pixelsize=17' -h 30
 bindsym $mod+F12 exec --no-startup-id rofi -show run -font "Noto Sans 13"
 
 
@@ -88,6 +82,7 @@ bindsym $mod+X exec --no-startup-id arcolinux-logout
 #################
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+c reload
+bindsym $mod+Shift+s exec --no-startup-id sh ~/.config/i3/scripts/screencheck.sh $firstMonitor $secondMonitor
 
 
 #######################
@@ -95,6 +90,7 @@ bindsym $mod+Shift+c reload
 #######################
 bindsym $mod+Shift+q kill
 bindsym $mod+q kill
+
 
 ##########################
 # Move And Focus Windows #
@@ -233,32 +229,18 @@ exec --no-startup-id volumeicon
 ###########
 # Polybar #
 ###########
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
+#exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 
 ##########################
 # Applications Shortcuts #
 ##########################
-bindsym control+mod1+w exec --no-startup-id arcolinux-welcome-app
-bindsym control+mod1+e exec --no-startup-id arcolinux-tweak-tool
-
 bindsym $mod+Return exec --no-startup-id alacritty;focus
 bindsym $mod+KP_Enter exec --no-startup-id alacritty;focus
 bindsym control+mod1+t exec --no-startup-id termite; focus
 bindsym control+mod1+Return exec --no-startup-id termite; focus
 bindsym control+mod1+KP_Enter exec --no-startup-id termite; focus
 bindsym F12 exec --no-startup-id xfce4-terminal --drop-down; focus
-
-bindsym control+mod1+c exec --no-startup-id catfish;focus
-
-bindsym control+mod1+k exec --no-startup-id arcolinux-logout
-bindsym control+mod1+l exec --no-startup-id arcolinux-logout
-
-bindsym control+mod1+r exec --no-startup-id rofi-theme-selector
-
-bindsym control+mod1+u exec --no-startup-id pavucontrol
-
-bindsym control+mod1+p exec --no-startup-id pamac-manager
 
 bindsym --release $mod+Escape exec xkill
 
@@ -320,8 +302,8 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 ##############
 # Brightness #
 ##############
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 
 ##############
@@ -405,17 +387,17 @@ popup_during_fullscreen smart
 exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
 bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
 
-    ##START THEMING WM
-    #Theme name : ArcoLinux Default
+##START THEMING WM
+#Theme name : ArcoLinux Default
 
-    # Window color settings
-    # class                 border  backgr. text    indicator
-    client.focused          #6790EB #6790EB #e5e5e5 #6790EB
-    client.unfocused        #222222 #222222 #aaaaaa #222222
-    client.focused_inactive #222222 #222222 #a9a9a9 #222222
-    client.placeholder      #222222 #222222 #aaaaaa #222222
-    client.urgent           #d42121 #d42121 #f7f7f7 #d42121
+# Window color settings
+# class                 border  backgr. text    indicator
+client.focused          #6790EB #6790EB #e5e5e5 #6790EB
+client.unfocused        #222222 #222222 #aaaaaa #222222
+client.focused_inactive #222222 #222222 #a9a9a9 #222222
+client.placeholder      #222222 #222222 #aaaaaa #222222
+client.urgent           #d42121 #d42121 #f7f7f7 #d42121
 
-    client.background       #242424
+client.background       #242424
 
-    ##STOP THEMING WM
+##STOP THEMING WM

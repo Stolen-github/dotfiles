@@ -88,7 +88,7 @@ set showcmd
 set cursorline
 set scrolloff=10
 set list
-set listchars=trail:¤
+set listchars=tab:»·,trail:¤
 set splitbelow splitright
 
 """"""""""

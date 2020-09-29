@@ -1,51 +1,48 @@
-"       _
-"__   _(_)_ __ ___  _ __ ___
-"\ \ / / | '_ ` _ \| '__/ __|
-" \ V /| | | | | | | | | (__
-"  \_/ |_|_| |_| |_|_|  \___|
+"            _
+" _ ____   _(_)_ __ ___  _ __ ___
+"| '_ \ \ / / | '_ ` _ \| '__/ __|
+"| | | \ V /| | | | | | | | | (__
+"|_| |_|\_/ |_|_| |_| |_|_|  \___|
 
 
 """""""""""
-" Plugins "
+" Plugs "
 """""""""""
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" https://github.com/VundleVim/Vundle.vim
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin()
 
 " https://github.com/Raimondi/delimitMate
-Plugin 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 
 " https://github.com/itchyny/lightline.vim
-Plugin 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
 " https://github.com/tpope/vim-surround
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
+
+" https://github.com/tpope/vim-fugitive
+Plug 'tpope/vim-fugitive'
 
 " https://github.com/junegunn/fzf.vim
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " https://github.com/preservim/nerdcommenter
-Plugin 'preservim/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 
 " https://github.com/lepture/vim-jinja
-Plugin 'lepture/vim-jinja'
+Plug 'lepture/vim-jinja'
 
 " https://github.com/gruvbox-community/gruvbox
-Plugin 'gruvbox-community/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 
 " https://github.com/shinchu/lightline-gruvbox.vim
-Plugin 'shinchu/lightline-gruvbox.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
 
 " https://github.com/neoclide/coc.nvim
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
-runtime! plugin/sensible.vim
 
 """""""""""""""
 " Indentation "
@@ -55,12 +52,14 @@ set shiftwidth=4
 set expandtab
 autocmd Filetype make setlocal noexpandtab
 
+
 """"""""""
 " Search "
 """"""""""
 set ignorecase
 set smartcase
 set nohlsearch
+
 
 """"""""
 " File "
@@ -70,6 +69,7 @@ set nobackup
 set noswapfile
 set hidden
 autocmd Filetype twig set ft=jinja
+
 
 """""""""""""
 " Interface "
@@ -81,8 +81,24 @@ set noshowmode
 set cursorline
 set scrolloff=10
 set list
-set listchars=trail:¤
+set listchars=tab:»·,trail:¤
 set splitbelow splitright
+
+
+""""""""""""""
+" Status Bar "
+""""""""""""""
+let g:lightline = {
+    \ 'colorscheme': 'gruvbox',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'FugitiveHead'
+    \ },
+    \}
+
 
 """"""""""
 " Colors "
@@ -90,7 +106,7 @@ set splitbelow splitright
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection='0'
 colorscheme gruvbox
-let g:lightline = {'colorscheme': 'gruvbox'}
+
 
 """"""""""""
 " Mappings "
@@ -104,10 +120,15 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <C-p> :Files<CR>
 nnoremap <leader><leader> :e #<CR>
 
-""""""""""""""""""""""""
-" Use System Clipboard "
-""""""""""""""""""""""""
+
+"""""""""""""""""
+" Miscellaneous "
+"""""""""""""""""
 set clipboard+=unnamedplus
 set updatetime=300
 
+
+""""""""""""""""""""""""""
+" Exteral Plugin Configs "
+""""""""""""""""""""""""""
 source ~/.config/nvim/PlugSettings/coc.vim
