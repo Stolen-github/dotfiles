@@ -1,9 +1,6 @@
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Always show signcolumn
-set signcolumn=yes
-
 " Tab Completion
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :

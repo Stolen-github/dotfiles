@@ -10,9 +10,6 @@
 """""""""""
 call plug#begin()
 
-" https://github.com/Raimondi/delimitMate
-"Plug 'Raimondi/delimitMate'
-
 " https://github.com/itchyny/lightline.vim
 Plug 'itchyny/lightline.vim'
 
@@ -40,6 +37,9 @@ Plug 'shinchu/lightline-gruvbox.vim'
 
 " https://github.com/neoclide/coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" https://github.com/rhysd/vim-clang-format
+Plug 'rhysd/vim-clang-format'
 
 call plug#end()
 
@@ -83,6 +83,7 @@ set scrolloff=10
 set list
 set listchars=tab:»·,trail:¤
 set splitbelow splitright
+set signcolumn=yes
 
 
 """"""""""""""
@@ -117,7 +118,6 @@ nnoremap j gj
 nnoremap k gk
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <C-p> :Files<CR>
 nnoremap <leader><leader> :e #<CR>
 
 
@@ -132,3 +132,6 @@ set updatetime=300
 " Exteral Plugin Configs "
 """"""""""""""""""""""""""
 source ~/.config/nvim/PlugSettings/coc.vim
+source ~/.config/nvim/PlugSettings/nerdcommenter.vim
+source ~/.config/nvim/PlugSettings/fzf.vim
+source ~/.config/nvim/PlugSettings/clang-format.vim

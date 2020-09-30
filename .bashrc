@@ -13,7 +13,7 @@
 ##########
 # Prompt #
 ##########
-PS1="[\[\e[33m\]\u\[\e[m\]@\[\e[35m\]\h\[\e[m\]:\W] $ "
+export PS1="[\[\e[33m\]\u\[\e[m\]@\[\e[35m\]\h\[\e[m\]:\W] $ "
 
 
 ########
@@ -50,6 +50,8 @@ shopt -s expand_aliases # Expand aliases
 ###########
 # Aliases #
 ###########
+alias piscine="cd ~/Documents/epita/ing1/piscine/timothee.desveaux-piscine-2023"
+
 alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -la'
@@ -63,8 +65,11 @@ alias h='history'
 
 alias vim='nvim'
 
+alias gc='gcc -Wextra -Wall -Werror -std=c99 -pedantic'
+
 alias bashrc='vim ~/.bashrc'
 alias vimrc='vim ~/.vimrc'
+alias nvimrc='vim ~/.config/nvim/init.vim'
 alias i3conf='vim ~/.config/i3/config'
 alias polyconf='vim ~/.config/polybar/config'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

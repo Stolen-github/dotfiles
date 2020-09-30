@@ -43,10 +43,14 @@ Plugin 'gruvbox-community/gruvbox'
 " https://github.com/shinchu/lightline-gruvbox.vim
 Plugin 'shinchu/lightline-gruvbox.vim'
 
+" https://github.com/rhysd/vim-clang-format
+Plugin 'rhysd/vim-clang-format'
+
 call vundle#end()
 filetype plugin indent on
 
 runtime! plugin/sensible.vim
+
 
 """""""""""""""
 " Indentation "
@@ -58,12 +62,14 @@ set smarttab
 set autoindent
 autocmd Filetype make setlocal noexpandtab
 
+
 """"""""""
 " Search "
 """"""""""
 set ignorecase
 set smartcase
 set nohlsearch
+
 
 """"""""
 " File "
@@ -75,6 +81,7 @@ set nobackup
 set noswapfile
 set hidden
 autocmd Filetype twig set ft=jinja
+
 
 """""""""""""
 " Interface "
@@ -91,6 +98,7 @@ set list
 set listchars=tab:»·,trail:¤
 set splitbelow splitright
 
+
 """"""""""
 " Colors "
 """"""""""
@@ -100,6 +108,8 @@ let g:gruvbox_invert_selection='0'
 colorscheme gruvbox
 let g:lightline = {'colorscheme': 'gruvbox'}
 
+
+""""""""""""
 " Mappings "
 """"""""""""
 let mapleader = " "
@@ -108,5 +118,5 @@ nnoremap j gj
 nnoremap k gk
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <C-p> :w<CR> \| :Files<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <leader><leader> :e #<CR>

@@ -44,6 +44,7 @@ exec --no-startup-id sh ~/.config/i3/scripts/screencheck.sh $firstMonitor $secon
 
 workspace 1 output $firstMonitor
 workspace 2 output $secondMonitor
+workspace 8 output $secondMonitor
 workspace 10 output $secondMonitor
 workspace 9 output $secondMonitor
 
@@ -206,12 +207,14 @@ assign [class="Discord|discord"] 9
 assign [class="Spotify|spotify"] 10
 for_window [class="Spotify"] move to workspace 10
 
+assign [class="Thunderbird|thunderbird"] 8
 
 #############
 # Autostart #
 #############
 exec --no-startup-id spotify
 exec --no-startup-id discord
+exec --no-startup-id thunderbird
 exec_always --no-startup-id autotiling
 exec --no-startup-id feh --bg-fill ~/Pictures/celeste.png &
 

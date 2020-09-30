@@ -30,7 +30,7 @@ font:
     family: Ubuntu mono
     style: Bold Italic
 
-  size: 10.0
+  size: 9.0
 
   offset:
     x: 0
@@ -79,8 +79,6 @@ live_config_reload: true
 
 shell:
   program: /bin/bash
-  args:
-    - --login
 
 working_directory: None
 
@@ -93,7 +91,6 @@ mouse:
   url:
     launcher:
       program: xdg-open
-
     modifiers: Shift
 
 # Key bindings
