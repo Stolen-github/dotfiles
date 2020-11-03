@@ -116,7 +116,7 @@ font-5 = "Font Awesome 5 Free:size=10;0"
 
 modules-left = i3
 modules-center = previous spotify next
-modules-right = date volume brightness redshift battery
+modules-right = date brightness redshift volume battery
 
 separator = |
 
@@ -203,7 +203,7 @@ ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
 ws-icon-5 = 6;
-ws-icon-6 = 7;
+ws-icon-6 = 7;
 ws-icon-7 = 8;
 ws-icon-8 = 9;
 ws-icon-9 = 10;
@@ -302,11 +302,11 @@ format-underline = #9f78e1
 ;https://github.com/jaagr/polybar/wiki/Module:-date
 type = internal/date
 
-interval = 5
+interval = 1
 date =
 date-alt = " %d-%m-%Y"
 time = %H:%M
-time-alt = %H:%M
+time-alt = %H:%M:%S
 format-prefix = " "
 format-underline = #df6ce6
 format-foreground = ${colors.foreground}
@@ -372,6 +372,7 @@ format-underline = #1db954
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+click-right = i3-msg workspace 10
 
 ################################################################################
 

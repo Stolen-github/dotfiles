@@ -44,16 +44,17 @@ exec --no-startup-id sh ~/.config/i3/scripts/screencheck.sh $firstMonitor $secon
 
 workspace 1 output $firstMonitor
 workspace 2 output $secondMonitor
+workspace 7 output $secondMonitor
 workspace 8 output $secondMonitor
-workspace 10 output $secondMonitor
 workspace 9 output $secondMonitor
+workspace 10 output $secondMonitor
 
 
-##################################
-# Launcher Applications Shortcut #
-##################################
+################
+# Dmenu / Rofi #
+################
 bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#101010' -sb '#6c244b' -fn 'Ubuntu Mono:bold:pixelsize=17' -h 30
-bindsym $mod+F12 exec --no-startup-id rofi -show run -font "Noto Sans 13"
+bindsym $mod+F12 exec --no-startup-id rofi -show emoji -modi emoji
 
 
 ###################
@@ -152,6 +153,8 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym Mod1+Ctrl+Right workspace next
 bindsym Mod1+Ctrl+Left workspace prev
 
+bindsym $mod+m move workspace to output up
+
 for_window [urgent=latest] focus
 
 
@@ -202,12 +205,15 @@ font pango:UbuntuMono-regular 12
 #####################################
 # Assign Applications To Workspaces #
 #####################################
+assign [class="Teams|teams"] 7
+
+assign [class="Thunderbird|thunderbird"] 8
+
 assign [class="Discord|discord"] 9
 
 assign [class="Spotify|spotify"] 10
 for_window [class="Spotify"] move to workspace 10
 
-assign [class="Thunderbird|thunderbird"] 8
 
 #############
 # Autostart #
@@ -223,7 +229,6 @@ exec --no-startup-id feh --bg-fill ~/Pictures/celeste.png &
 # Tray Applications #
 #####################
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id pamac-tray
 exec --no-startup-id nm-applet
 exec_always --no-startup-id numlockx on
 exec --no-startup-id volumeicon
@@ -258,12 +263,6 @@ bindsym $mod+Shift+KP_Enter exec --no-startup-id thunar;focus
 # Screenshots #
 ###############
 bindsym Print exec --no-startup-id flameshot gui
-
-
-##############
-# Play/Pause #
-##############
-bindsym Pause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 
 #####################
@@ -301,6 +300,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioStop exec --no-startup-id playerctl stop
 
+bindsym Pause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 ##############
 # Brightness #

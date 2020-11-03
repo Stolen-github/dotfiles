@@ -27,6 +27,9 @@ Plugin 'itchyny/lightline.vim'
 " https://github.com/tpope/vim-surround
 Plugin 'tpope/vim-surround'
 
+" https://github.com/tpope/vim-fugitive
+Plugin 'tpope/vim-fugitive'
+
 " https://github.com/junegunn/fzf.vim
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
@@ -37,11 +40,8 @@ Plugin 'preservim/nerdcommenter'
 " https://github.com/lepture/vim-jinja
 Plugin 'lepture/vim-jinja'
 
-" https://github.com/gruvbox-community/gruvbox
-Plugin 'gruvbox-community/gruvbox'
-
-" https://github.com/shinchu/lightline-gruvbox.vim
-Plugin 'shinchu/lightline-gruvbox.vim'
+" https://github.com/joshdick/onedark.vim
+Plugin 'joshdick/onedark.vim'
 
 " https://github.com/rhysd/vim-clang-format
 Plugin 'rhysd/vim-clang-format'
@@ -55,12 +55,12 @@ runtime! plugin/sensible.vim
 """""""""""""""
 " Indentation "
 """""""""""""""
-set tabstop=4
+set tabstop=8
 set shiftwidth=4
 set expandtab
 set smarttab
 set autoindent
-autocmd Filetype make setlocal noexpandtab
+autocmd Filetype make setlocal noexpandtab shiftwidth=8
 
 
 """"""""""
@@ -99,14 +99,27 @@ set listchars=tab:»·,trail:¤
 set splitbelow splitright
 
 
+""""""""""""""
+" Status Bar "
+""""""""""""""
+let g:lightline = {
+            \ 'colorscheme': 'onedark',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'FugitiveHead'
+            \ },
+            \}
+
+
 """"""""""
 " Colors "
 """"""""""
 set background=dark
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_invert_selection='0'
-colorscheme gruvbox
-let g:lightline = {'colorscheme': 'gruvbox'}
+set termguicolors
+colorscheme onedark
 
 
 """"""""""""

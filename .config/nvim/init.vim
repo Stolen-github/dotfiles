@@ -4,10 +4,9 @@
 "| | | \ V /| | | | | | | | | (__
 "|_| |_|\_/ |_|_| |_| |_|_|  \___|
 
-
-"""""""""""
+"""""""""
 " Plugs "
-"""""""""""
+"""""""""
 call plug#begin()
 
 " https://github.com/itchyny/lightline.vim
@@ -29,11 +28,8 @@ Plug 'preservim/nerdcommenter'
 " https://github.com/lepture/vim-jinja
 Plug 'lepture/vim-jinja'
 
-" https://github.com/gruvbox-community/gruvbox
-Plug 'gruvbox-community/gruvbox'
-
-" https://github.com/shinchu/lightline-gruvbox.vim
-Plug 'shinchu/lightline-gruvbox.vim'
+" https://github.com/joshdick/onedark.vim
+Plug 'joshdick/onedark.vim'
 
 " https://github.com/neoclide/coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -41,16 +37,19 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " https://github.com/rhysd/vim-clang-format
 Plug 'rhysd/vim-clang-format'
 
+" https://github.com/vimwiki/vimwiki
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
 
 
 """""""""""""""
 " Indentation "
 """""""""""""""
-set tabstop=4
+set tabstop=8
 set shiftwidth=4
 set expandtab
-autocmd Filetype make setlocal noexpandtab
+autocmd Filetype make setlocal noexpandtab shiftwidth=8
 
 
 """"""""""
@@ -90,23 +89,23 @@ set signcolumn=yes
 " Status Bar "
 """"""""""""""
 let g:lightline = {
-    \ 'colorscheme': 'gruvbox',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-    \ },
-    \ 'component_function': {
-    \   'gitbranch': 'FugitiveHead'
-    \ },
-    \}
+            \ 'colorscheme': 'onedark',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'FugitiveHead'
+            \ },
+            \}
 
 
 """"""""""
 " Colors "
 """"""""""
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_invert_selection='0'
-colorscheme gruvbox
+set termguicolors
+let g:onedark_terminal_italics = 1
+colorscheme onedark
 
 
 """"""""""""
@@ -116,9 +115,9 @@ let mapleader = " "
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
+nnoremap <leader><leader> :e #<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <leader><leader> :e #<CR>
 
 
 """""""""""""""""
@@ -135,3 +134,4 @@ source ~/.config/nvim/PlugSettings/coc.vim
 source ~/.config/nvim/PlugSettings/nerdcommenter.vim
 source ~/.config/nvim/PlugSettings/fzf.vim
 source ~/.config/nvim/PlugSettings/clang-format.vim
+source ~/.config/nvim/PlugSettings/vimwiki.vim

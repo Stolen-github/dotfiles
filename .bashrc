@@ -9,11 +9,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-
 ##########
 # Prompt #
 ##########
-export PS1="[\[\e[33m\]\u\[\e[m\]@\[\e[35m\]\h\[\e[m\]:\W] $ "
+export PS1="\[\e[35m\]\w\[\e[m\] \[\e[31m\]»\[\e[m\] "
 
 
 ########
@@ -50,12 +49,11 @@ shopt -s expand_aliases # Expand aliases
 ###########
 # Aliases #
 ###########
-alias piscine="cd ~/Documents/epita/ing1/piscine/timothee.desveaux-piscine-2023"
+alias prog='cd ~/Documents/epita/ing1/prog'
 
 alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -la'
-alias l='ls'
 alias l.="ls -A | egrep '^\.'"
 alias lc="clear;ls"
 
@@ -65,7 +63,8 @@ alias h='history'
 
 alias vim='nvim'
 
-alias gc='gcc -Wextra -Wall -Werror -std=c99 -pedantic'
+alias cc='gcc -Wextra -Wall -Werror -std=c99 -pedantic -fsanitize=address -o main'
+alias valgrind-full='valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=high --track-origins=yes --vgdb=yes'
 
 alias bashrc='vim ~/.bashrc'
 alias vimrc='vim ~/.vimrc'
@@ -82,7 +81,6 @@ alias pacman='sudo pacman --color auto'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 
 alias psa="ps auxf"
-alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 alias yt="youtube-dl --add-metadata -i"
 alias yta="yt -x -f bestaudio/best"
@@ -117,7 +115,8 @@ extract ()
 }
 
 # Move up by N in directory
-up () {
+up ()
+{
       COUNTER=$1
       while [[ $COUNTER -gt 0 ]]
       do
