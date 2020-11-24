@@ -40,6 +40,9 @@ Plug 'rhysd/vim-clang-format'
 " https://github.com/vimwiki/vimwiki
 Plug 'vimwiki/vimwiki'
 
+" https://github.com/dag/vim-fish
+Plug 'dag/vim-fish'
+
 call plug#end()
 
 

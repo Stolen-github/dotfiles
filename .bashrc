@@ -5,9 +5,11 @@
 #| |_) | (_| \__ \ | | | | | (__
 #|_.__/ \__,_|___/_| |_|_|  \___|
 
+fish #Testing the fish shell
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
 
 ##########
 # Prompt #
@@ -18,12 +20,12 @@ export PS1="\[\e[35m\]\w\[\e[m\] \[\e[31m\]»\[\e[m\] "
 ########
 # Path #
 ########
-if [ -d "$HOME/.bin" ] ;
-then PATH="$HOME/.bin:$PATH"
+if [ -d "$HOME/.bin" ]; then
+    PATH="$HOME/.bin:$PATH"
 fi
 
-if [ -d "$HOME/.local/bin" ] ;
-then PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
 
@@ -59,15 +61,14 @@ alias lc="clear;ls"
 
 alias q='exit'
 alias c='clear'
-alias h='history'
 
 alias vim='nvim'
+alias vimwiki='nvim -c VimwikiIndex'
 
-alias cc='gcc -Wextra -Wall -Werror -std=c99 -pedantic -fsanitize=address -o main'
+alias gf='gcc -Wextra -Wall -Werror -std=c99 -pedantic -fsanitize=address -o main'
 alias valgrind-full='valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=high --track-origins=yes --vgdb=yes'
 
 alias bashrc='vim ~/.bashrc'
-alias vimrc='vim ~/.vimrc'
 alias nvimrc='vim ~/.config/nvim/init.vim'
 alias i3conf='vim ~/.config/i3/config'
 alias polyconf='vim ~/.config/polybar/config'
@@ -84,6 +85,8 @@ alias psa="ps auxf"
 
 alias yt="youtube-dl --add-metadata -i"
 alias yta="yt -x -f bestaudio/best"
+
+alias zathura="zathura --fork"
 
 
 #############
@@ -107,7 +110,7 @@ extract ()
                   *.deb)       ar x $1      ;;
                   *.tar.xz)    tar xf $1    ;;
                   *.tar.zst)   unzstd $1    ;;
-                  *)           echo "'$1' cannot be extracted via ex()" ;;
+                  *)           echo "'$1' cannot be extracted via extract()" ;;
             esac
       else
             echo "'$1' is not a valid file"
