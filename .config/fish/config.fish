@@ -43,4 +43,5 @@ alias yta="yt -x -f bestaudio/best"
 
 alias zathura="zathura --fork"
 
-alias log="git log --all --decorate --oneline --graph --color=always"
+alias gl="git log --all --decorate --oneline --graph --color=always"
+alias gs="git status -s"

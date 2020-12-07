@@ -5,7 +5,6 @@
 #| |_) | (_| \__ \ | | | | | (__
 #|_.__/ \__,_|___/_| |_|_|  \___|
 
-fish #Testing the fish shell
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return

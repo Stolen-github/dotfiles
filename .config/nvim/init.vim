@@ -25,9 +25,6 @@ Plug 'junegunn/fzf.vim'
 " https://github.com/preservim/nerdcommenter
 Plug 'preservim/nerdcommenter'
 
-" https://github.com/lepture/vim-jinja
-Plug 'lepture/vim-jinja'
-
 " https://github.com/joshdick/onedark.vim
 Plug 'joshdick/onedark.vim'
 
@@ -40,8 +37,10 @@ Plug 'rhysd/vim-clang-format'
 " https://github.com/vimwiki/vimwiki
 Plug 'vimwiki/vimwiki'
 
-" https://github.com/dag/vim-fish
-Plug 'dag/vim-fish'
+Plug 'sheerun/vim-polyglot'
+
+" https://github.com/PotatoesMaster/i3-vim-syntax
+Plug 'PotatoesMaster/i3-vim-syntax'
 
 call plug#end()
 
@@ -70,7 +69,6 @@ set autowrite
 set nobackup
 set noswapfile
 set hidden
-autocmd Filetype twig set ft=jinja
 
 
 """""""""""""
@@ -121,6 +119,18 @@ nnoremap k gk
 nnoremap <leader><leader> :e #<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+
+"""""""""""""
+" Functions "
+"""""""""""""
+function! s:insert_gates()
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  execute "normal! i#ifndef " . gatename
+  execute "normal! 2o#define " . gatename
+  execute "normal! Go#endif /* !" . gatename . " */"
+endfunction
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 
 """""""""""""""""

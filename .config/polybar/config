@@ -268,6 +268,9 @@ format-discharging-background = ${colors.background}
 
 format-full-prefix = " "
 format-full-underline = #a3c725
+format-full-foreground = ${colors.foreground}
+format-full-background = ${colors.background}
+
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
