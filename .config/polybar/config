@@ -61,7 +61,7 @@ font-5 = "Font Awesome 5 Free:size=10;0"
 
 modules-left = i3 xwindow
 modules-center = previous spotify next
-modules-right = date volume brightness redshift battery
+modules-right = pacman-updates date volume brightness redshift battery
 
 separator = |
 
@@ -116,7 +116,7 @@ font-5 = "Font Awesome 5 Free:size=10;0"
 
 modules-left = i3
 modules-center = previous spotify next
-modules-right = date brightness redshift volume battery
+modules-right = pacman-updates date brightness redshift volume battery
 
 separator = |
 
@@ -331,6 +331,19 @@ click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
+################################################################################
+
+[module/pacman-updates]
+type = custom/script
+;exec = pacman -Qu | wc -l
+exec = checkupdates | wc -l
+interval = 1000
+label = %output%
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-prefix = " "
+format-underline = #FF66CC
+
 ###############################################################################
 
 [module/previous]
@@ -391,7 +404,7 @@ label-muted = muted
 format-volume-foreground = ${colors.foreground}
 format-volume-background = ${colors.background}
 format-volume-underline = #cd1f3f
-format-muted-prefix = "  "
+format-muted-prefix = " "
 format-muted-prefix-foreground = ${colors.foreground}
 format-muted-underline = "#ff0000"
 format-muted-foreground = ${colors.foreground}

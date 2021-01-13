@@ -45,3 +45,6 @@ alias zathura="zathura --fork"
 
 alias gl="git log --all --decorate --oneline --graph --color=always"
 alias gs="git status -s"
+
+export PGDATA="$HOME/postgres_data"
+export PGHOST="/tmp"

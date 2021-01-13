@@ -37,10 +37,11 @@ Plug 'rhysd/vim-clang-format'
 " https://github.com/vimwiki/vimwiki
 Plug 'vimwiki/vimwiki'
 
-Plug 'sheerun/vim-polyglot'
-
 " https://github.com/PotatoesMaster/i3-vim-syntax
 Plug 'PotatoesMaster/i3-vim-syntax'
+
+" https://github.com/dag/vim-fish
+Plug 'dag/vim-fish'
 
 call plug#end()
 

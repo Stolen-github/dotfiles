@@ -136,3 +136,5 @@ up ()
 ###########
 export EDITOR=nvim
 export LANG=en_US.utf8
+export PGDATA="$HOME/postgres_data"
+export PGHOST="/tmp"
