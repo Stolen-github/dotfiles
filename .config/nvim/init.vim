@@ -34,8 +34,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " https://github.com/rhysd/vim-clang-format
 Plug 'rhysd/vim-clang-format'
 
-" https://github.com/vimwiki/vimwiki
-Plug 'vimwiki/vimwiki'
+" https://github.com/octol/vim-cpp-enhanced-highlight
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " https://github.com/PotatoesMaster/i3-vim-syntax
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -120,18 +120,6 @@ nnoremap k gk
 nnoremap <leader><leader> :e #<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-
-
-"""""""""""""
-" Functions "
-"""""""""""""
-function! s:insert_gates()
-  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-  execute "normal! i#ifndef " . gatename
-  execute "normal! 2o#define " . gatename
-  execute "normal! Go#endif /* !" . gatename . " */"
-endfunction
-autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 
 """""""""""""""""

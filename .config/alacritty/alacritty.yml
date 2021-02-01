@@ -15,19 +15,19 @@ scrolling:
 
 font:
   normal:
-    family: Ubuntu mono
+    family: Ubuntu Mono
     style: Regular
 
   bold:
-    family: Ubuntu mono
+    family: Ubuntu Mono
     style: Bold
 
   italic:
-    family: Ubuntu mono
+    family: Ubuntu Mono
     style: Italic
 
   bold_italic:
-    family: Ubuntu mono
+    family: Ubuntu Mono
     style: Bold Italic
 
   size: 9.0

@@ -1,5 +1,6 @@
 set PATH $PATH ~/.bin
 set PATH $PATH ~/.local/bin
+set PATH $PATH ~/.scripts
 
 set fish_greeting
 
@@ -20,7 +21,8 @@ alias c='clear'
 alias vim='nvim'
 alias vimwiki='nvim -c VimwikiIndex'
 
-alias gf='gcc -Wextra -Wall -Werror -std=c99 -pedantic -fsanitize=address -o main'
+alias cf='gcc -Wextra -Wall -Werror -std=c99 -pedantic -fsanitize=address -o main'
+alias cpf='g++ -Wextra -Wall -Werror -std=c++17 -pedantic -o main'
 alias valgrind-full='valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=high --track-origins=yes --vgdb=yes'
 
 alias bashrc='vim ~/.bashrc'
