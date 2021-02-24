@@ -61,7 +61,7 @@ bindsym $mod+F12 exec --no-startup-id rofi -show emoji -modi emoji
 # Exit i3 Options #
 ###################
 bindsym $mod+Shift+e exec --no-startup-id arcolinux-logout
-bindsym $mod+X exec --no-startup-id arcolinux-logout
+bindsym $mod+x exec --no-startup-id arcolinux-logout
 
 
 #################
@@ -373,3 +373,5 @@ client.urgent           #d42121 #d42121 #f7f7f7 #d42121
 client.background       #242424
 
 ##STOP THEMING WM
+
+# vim:ft=i3config

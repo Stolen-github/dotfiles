@@ -1,13 +1,15 @@
 set PATH $PATH ~/.bin
 set PATH $PATH ~/.local/bin
 set PATH $PATH ~/.scripts
+set PATH $PATH /usr/local/go/bin
 
 set fish_greeting
 
 ###########
 # Aliases #
 ###########
-alias prog='cd ~/Documents/epita/ing1/prog'
+alias prog='cd ~/Documents/epita/ing1/PROG'
+alias work='cd ~/Documents/epita/ing1/'
 
 alias ls='ls --color=auto'
 alias la='ls -a'
@@ -21,7 +23,7 @@ alias c='clear'
 alias vim='nvim'
 alias vimwiki='nvim -c VimwikiIndex'
 
-alias cf='gcc -Wextra -Wall -Werror -std=c99 -pedantic -fsanitize=address -o main'
+alias ccf='gcc -Wextra -Wall -Werror -std=c99 -pedantic -fsanitize=address -o main'
 alias cpf='g++ -Wextra -Wall -Werror -std=c++17 -pedantic -o main'
 alias valgrind-full='valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=high --track-origins=yes --vgdb=yes'
 

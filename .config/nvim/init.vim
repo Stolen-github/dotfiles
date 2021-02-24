@@ -9,9 +9,6 @@
 """""""""
 call plug#begin()
 
-" https://github.com/itchyny/lightline.vim
-Plug 'itchyny/lightline.vim'
-
 " https://github.com/tpope/vim-surround
 Plug 'tpope/vim-surround'
 
@@ -25,23 +22,26 @@ Plug 'junegunn/fzf.vim'
 " https://github.com/preservim/nerdcommenter
 Plug 'preservim/nerdcommenter'
 
-" https://github.com/joshdick/onedark.vim
-Plug 'joshdick/onedark.vim'
-
 " https://github.com/neoclide/coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " https://github.com/rhysd/vim-clang-format
 Plug 'rhysd/vim-clang-format'
 
-" https://github.com/octol/vim-cpp-enhanced-highlight
-Plug 'octol/vim-cpp-enhanced-highlight'
+" https://github.com/liuchengxu/vim-which-key
+Plug 'liuchengxu/vim-which-key'
 
-" https://github.com/PotatoesMaster/i3-vim-syntax
-Plug 'PotatoesMaster/i3-vim-syntax'
+" https://github.com/ayu-theme/ayu-vim
+Plug 'ayu-theme/ayu-vim'
 
-" https://github.com/dag/vim-fish
-Plug 'dag/vim-fish'
+" https://github.com/itchyny/lightline.vim
+Plug 'itchyny/lightline.vim'
+
+" https://github.com/RRethy/vim-hexokinase
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+
+" https://github.com/sheerun/vim-polyglot
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -70,14 +70,14 @@ set autowrite
 set nobackup
 set noswapfile
 set hidden
+autocmd BufEnter *.ll set filetype=lex
 
 
 """""""""""""
 " Interface "
 """""""""""""
-set number relativenumber
-set cc=80
-set mouse=a
+set number
+set colorcolumn=80
 set noshowmode
 set cursorline
 set scrolloff=10
@@ -91,7 +91,7 @@ set signcolumn=yes
 " Status Bar "
 """"""""""""""
 let g:lightline = {
-            \ 'colorscheme': 'onedark',
+            \ 'colorscheme': 'ayu_mirage',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -106,25 +106,28 @@ let g:lightline = {
 " Colors "
 """"""""""
 set termguicolors
-let g:onedark_terminal_italics = 1
-colorscheme onedark
+let ayucolor="mirage"
+colorscheme ayu
 
 
 """"""""""""
 " Mappings "
 """"""""""""
-let mapleader = " "
+let mapleader = "\<Space>"
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader><leader> :e #<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+autocmd FileType markdown nnoremap <buffer> <leader>mp :silent !pandoc % -o %:r.pdf<CR>
+autocmd FileType markdown nnoremap <buffer> <leader>mv :silent !zathura %:r.pdf &<CR>
 
 
 """""""""""""""""
 " Miscellaneous "
 """""""""""""""""
+set mouse=a
 set clipboard+=unnamedplus
 set updatetime=300
 
@@ -136,4 +139,5 @@ source ~/.config/nvim/PlugSettings/coc.vim
 source ~/.config/nvim/PlugSettings/nerdcommenter.vim
 source ~/.config/nvim/PlugSettings/fzf.vim
 source ~/.config/nvim/PlugSettings/clang-format.vim
-source ~/.config/nvim/PlugSettings/vimwiki.vim
+source ~/.config/nvim/PlugSettings/which-key.vim
+source ~/.config/nvim/PlugSettings/hexokinase.vim
