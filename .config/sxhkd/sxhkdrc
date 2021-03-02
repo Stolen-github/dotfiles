@@ -1,0 +1,214 @@
+##########################
+# WM Independent Hotkeys #
+##########################
+
+#######################
+# Reload sxhkd Config #
+#######################
+super + Escape
+    pkill -USR1 -x sxhkd
+
+
+#####################
+# Terminal Emulator #
+#####################
+super + Return
+    alacritty
+
+
+####################
+# Program Launcher #
+####################
+super + d
+    dmenu_run -i -nb '#101010' -sb '#6c244b' -fn 'Ubuntu Mono:bold:pixelsize=17' -h 30 -m 1
+
+super + F12
+    rofi -show emoji -modi emoji
+
+
+##########
+# Logout #
+##########
+super + x
+    arcolinux-logout
+
+
+
+#################
+# BSPWM Hotkeys #
+#################
+
+ ######################
+ # Quit/Restart BSPWM #
+ ######################
+super + alt + {q,r}
+     bspc {quit,wm -r}
+
+
+##################
+# Close and Kill #
+##################
+super + {_,shift + }q
+    bspc node -{c,k}
+
+
+##################
+# Toggle Monocle #
+##################
+super + m
+    bspc desktop -l next
+
+
+################
+# Window State #
+################
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+
+##############
+# Node Flags #
+##############
+super + ctrl + {m,x,y,z}
+    bspc node -g {marked,locked,sticky,private}
+
+
+#######################
+# Focus and Swap Node #
+#######################
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+
+##################################
+# Focus Related Node in the tree #
+##################################
+super + {p,b,comma,period}
+    bspc node -f @{parent,brother,first,second}
+
+
+#########################################################
+# Focus the Next/Previous Window in the Current Desktop #
+#########################################################
+super + {_,shift + }c
+    bspc node -f {next,prev}.local.!hidden.window
+
+
+###############################
+# Focus the Last Node/Desktop #
+###############################
+super + {grave,Tab}
+    bspc {node,desktop} -f last
+
+
+######################################################
+# Focus the Older or Newer Node in the Focus History #
+######################################################
+super + {o,i}
+    bspc wm -h off; \
+    bspc node {older,newer} -f; \
+    bspc wm -h on
+
+
+######################################
+# Focus or Send to the Given Desktop #
+######################################
+super + {_,shift + }{ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
+    bspc {desktop -f,node -d} '{1,2,3,4,5,6,7,8,9,10}'
+
+
+###########################
+# Preselect the Direction #
+###########################
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+
+#######################
+# Preselect the Ratio #
+#######################
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+
+#######################
+# Cancel Preselection #
+#######################
+super + ctrl + space
+    bspc node -p cancel
+
+super + ctrl + shift + space
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+###################
+# Resize Outwoard #
+###################
+super + alt + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+
+#################
+# Resize Inward #
+#################
+super + alt + shift + {h,j,k,l}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+
+##########################
+# Move a Floating Window #
+##########################
+super + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+
+
+#########
+# Audio #
+#########
+XF86AudioRaiseVolume
+    amixer -D pulse sset Master '5%+'
+
+XF86AudioLowerVolume
+    amixer -D pulse sset Master '5%-'
+
+XF86AudioMute
+    amixer -D pulse set Master toggle
+
+XF86AudioPlay
+    playerctl play-pause
+
+XF86AudioNext
+    playerctl next
+
+XF86AudioPrev
+    playerctl previous
+
+XF86AudioStop
+    playerctl stop
+
+Pause
+    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+
+##############
+# Brightness #
+##############
+XF86MonBrightnessUp
+    brightnessctl set 5%+
+
+XF86MonBrightnessDown
+    brightnessctl set 5%-
+
+
+##############
+# Bar Toggle #
+##############
+super + shift + b
+    polybar-msg cmd toggle
+
+
+################
+# Print Screen #
+################
+Print
+    flameshot gui

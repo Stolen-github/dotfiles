@@ -141,3 +141,4 @@ source ~/.config/nvim/PlugSettings/fzf.vim
 source ~/.config/nvim/PlugSettings/clang-format.vim
 source ~/.config/nvim/PlugSettings/which-key.vim
 source ~/.config/nvim/PlugSettings/hexokinase.vim
+source ~/.config/nvim/PlugSettings/polyglot.vim
